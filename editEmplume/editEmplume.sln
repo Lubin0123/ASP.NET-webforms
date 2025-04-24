@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "editEmplume", ".", "{A1883844-157B-4C7B-A23F-9D2C5B4F5E3C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50110"
+		Debug.AspNetCompiler.PhysicalPath = "..\editEmplume\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50110\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50110"
+		Release.AspNetCompiler.PhysicalPath = "..\editEmplume\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50110\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50110"
+		SlnRelativePath = "..\editEmplume\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1883844-157B-4C7B-A23F-9D2C5B4F5E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1883844-157B-4C7B-A23F-9D2C5B4F5E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97BDB5C9-6EA4-4ECE-AE8E-C85E64F37082}
+	EndGlobalSection
+EndGlobal
