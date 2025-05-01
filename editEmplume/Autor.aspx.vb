@@ -10,7 +10,7 @@ Partial Class Autor
 
         If Not IsPostBack Then
             Dim sqlAutor As SqlDataSource = CType(FindControl("sqlAutor"), SqlDataSource)
-            sqlAutor.ConnectionString = ConfigurationManager.ConnectionStrings("MiconexionSQLServer").ConnectionString
+            sqlAutor.ConnectionString = ConfigurationManager.ConnectionStrings("conexionGeneral").ConnectionString
             sqlAutor.SelectCommand = "SELECT * FROM Autor"
             sqlAutor.DataBind()
         End If
