@@ -8,16 +8,21 @@
     <title style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Datos autor </title>
     <style>
         .container{
-            width: 400px;
-            margin: 40px;
-            padding: 30px;
+            width: 600px;
+            margin: 85px;
+            margin-top: 3px;
+            padding: 10px;
             background-color: #fff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-radius: 12px;
             font-family: 'Segoe UI', sans-serif;
             display:flex;
             flex-direction:column;
         }
+        .GwAutor{
+            margin-top: 10px;
+            display:flex;
+            justify-content:center;
+        }
+
         .LlblMessage{
             color:blue;
             font-size:14px;
@@ -28,23 +33,32 @@
             font-size:14px;
             margin-top: -10px
         }
+
+        .imgFecha{
+            margin-left:150px;
+            
+        }
+   
         
     </style>
 </head>
 <body>
-    <form class="container" runat="server">
-        <div  class="container" ="height: 500px">
-            <asp:Label ID="lblNomAutor" runat="server" Text=" Nombre:"></asp:Label>
-            <asp:TextBox ID="txtNomAutor" runat="server"></asp:TextBox>
-
+    <div  class="container" style="height:500px">
+        <form class="container" runat="server">
+            <asp:Label ID="lblNomAutor" runat="server" Text=" Nombre:" Style="font-weight: bold; font-size: 16px; color: #333;
+                margin-left:150px;"
+            ></asp:Label>
+            <asp:TextBox ID="txtNomAutor"  style="width:300px; margin-left:auto; margin-right:auto; display:block;" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblApelliAutor" runat="server" Text=" Apellido:"></asp:Label>
-            <asp:TextBox ID="txtApelliAutor" runat="server"></asp:TextBox>
+            <asp:Label ID="lblApelliAutor" runat="server" Text=" Apellido:" Style="font-weight: bold; font-size: 16px; color: #333;
+                margin-left:150px;">
+            </asp:Label>
+            <asp:TextBox ID="txtApelliAutor" style="width:300px; margin-left:auto; margin-right:auto; display:block;" runat="server"></asp:TextBox>
             <br />
-
-            <br />     
-            <asp:TextBox ID="txtFechaNaci" runat="server" ReadOnly="True"></asp:TextBox>
+            <div class="imgFecha">
             <asp:ImageButton ID="btnCalendario" runat="server" ImageUrl="~/imgs/calendar-check.svg" Width="23px" Height="24px"/>
+            </div>
+            <asp:TextBox ID="txtFechaNaci" style="width:300px; margin-left:auto; margin-right:auto; display:block;" runat="server" ReadOnly="True"></asp:TextBox>
             <asp:Panel ID="pnlCalendario" runat="server" Visible="False">
                 <div>
                 </div>
@@ -52,24 +66,27 @@
             </asp:Panel>
 
             <br />
-            <asp:Label ID="lblBiografria" runat="server" Text="Biografia:"></asp:Label>
-            <asp:TextBox ID="txtBiografia" runat="server"></asp:TextBox>
+            <asp:Label ID="lblBiografria" runat="server" Text="Biografia:" Style="font-weight: bold; font-size: 16px; color: #333;
+                margin-left:150px;">
+            </asp:Label>
+            <asp:TextBox ID="txtBiografia" style="width:300px; margin-left:auto; margin-right:auto; display:block;" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="btnCrearAutor" runat="server" Text="Crear Autor"/>
+            <asp:Button ID="btnCrearAutor" style="width:300px; margin-left:auto; margin-right:auto; display:block;
+            background-color: #28a745;" runat="server" Text="Crear Autor"/>
 
 
             <asp:Label ID="LlblMessage" runat="server" CssClass="mensaje"></asp:Label>
             <asp:Label ID="LblError" runat="server" CssClass="mensajeAdvertencia"></asp:Label>
 
-        </div>
-        <div>
-            <asp:GridView ID="GwAutor" runat="server" Width="346px" DataSourceID="SqlAutor">
-            </asp:GridView>
-        </div>
-        <asp:SqlDataSource ID="SqlAutor" runat="server"></asp:SqlDataSource>
         
-        
-    </form>
+            <div class="GwAutor">
+                <asp:GridView ID="GwAutor" runat="server" Width="346px" DataSourceID="SqlAutor" AllowPaging="true" PageSize="10"
+                    EmptyDataText="No hay Autores para mostrar">
+                </asp:GridView>
+            </div>
+            <asp:SqlDataSource ID="SqlAutor"  runat="server" ></asp:SqlDataSource>      
+        </form>
+    </div>
 </body>
 </html>
 
