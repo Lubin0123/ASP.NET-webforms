@@ -1,31 +1,30 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Configuration
+Imports System.Drawing
 Partial Class Autor
     Inherits System.Web.UI.Page
-    Dim conexion As SqlConnection
-
-    Public Property LlblError As Object
+    'Public Property LlblError As Object
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Not IsPostBack Then
-            Dim sqlAutor As SqlDataSource = CType(FindControl("sqlAutor"), SqlDataSource)
-            sqlAutor.ConnectionString = ConfigurationManager.ConnectionStrings("conexionGeneral").ConnectionString
-            sqlAutor.SelectCommand = "SELECT * FROM Autor"
-            sqlAutor.DataBind()
+
         End If
-        'cargarAutor()
+        SqlAutor.ConnectionString = ConexionDB.ObtenerConexion().ConnectionString
+        cargarAutor()
+
     End Sub
     Sub crearAutor()
-        Dim conexion As New SqlConnection(ConfigurationManager.ConnectionStrings("MiconexionSQLServer").ConnectionString)
+        Dim nombre As String = txtNomAutor.Text.Trim().Replace("'", "''")
+        Dim apellido As String = txtApelliAutor.Text.Trim().Replace("'", "''")
+        Dim fechaNac As String = calFechaNac.SelectedDate.ToString("yyyy-MM-dd")
+        Dim biografia As String = txtBiografia.Text.Trim().Replace("'", "''")
+
+        Dim conexion As SqlConnection
+        conexion = ConexionDB.ObtenerConexion()
         Dim cmd As SqlCommand
-
         Try
-            Dim nombre As String = txtNomAutor.Text.Trim().Replace("'", "''")
-            Dim apellido As String = txtApelliAutor.Text.Trim().Replace("'", "''")
-            Dim fechaNac As String = calFechaNac.SelectedDate.ToString("yyyy-MM-dd")
-            Dim biografia As String = txtBiografia.Text.Trim().Replace("'", "''")
-
             conexion.Open()
             cmd = New SqlCommand
             cmd.CommandType = CommandType.Text
@@ -42,18 +41,33 @@ Partial Class Autor
             MostrarToast("dbg-ganger")
 
         Finally
-            If conexion.State = connectionState.Open Then
+            If conexion.State = ConnectionState.Open Then
                 conexion.Close()
 
             End If
         End Try
     End Sub
-    'Sub cargarAutor()
-    '    Dim sqlAutor As SqlDataSource = CType(FindControl("sqlAutor"), SqlDataSource)
-    '    sqlAutor.ConnectionString = ConfigurationManager.ConnectionStrings("MiConexionSQLServer").ConnectionString
-    '    sqlAutor.SelectCommand = "SELECT * FROM Autor"
-    '    sqlAutor.DataBind()
-    'End Sub
+    Sub cargarAutor()
+        SqlAutor.SelectCommand = "SELECT * FROM Autor"
+        SqlAutor.DataBind()
+    End Sub
+
+    Protected Sub DropUpdateAutor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        If Not IsPostBack Then
+            Exit Sub
+        End If
+        Dim accionSelect As String = DropUpdateAutor.SelectedValue
+        If String.IsNullOrWhiteSpace(accionSelect) Then
+            Exit Sub
+        End If
+        Select Case accionSelect
+            Case "Editar"
+                Response.Redirect("editarAutor.aspx")
+            Case "Eliminar"
+                Response.Redirect("eliminarAutor.aspx")
+        End Select
+    End Sub
+
 
     Private Sub btnCrearAutor_Click(sender As Object, e As EventArgs) Handles btnCrearAutor.Click
         crearAutor()
